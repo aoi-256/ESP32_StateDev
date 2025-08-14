@@ -63,7 +63,7 @@ ESP32_StateDev/
 
 2. `StateManager` クラス（`StateManager.hpp`/`StateManager.cpp`）のコンストラクタ `StateManager::StateManager()` で初期状態が `StateA` に設定され、`StateA::enter()` が呼ばれる
 
-3.  ```StateA::enter()```の処理が行われる（今回は内部の処理はない）
+3.  ```StateA::enter()```の処理が行われる（今回は空のメソッド）
 
 #### void loop()
 
@@ -75,19 +75,21 @@ ESP32_StateDev/
 
 6. 4の処理が1000回実行されると、`StateA::update()` から `manager.changeState()`（`StateManager.cpp`） が呼ばれる
 
-7. `manager.changeState()`（`StateManager.cpp`）で`StateA::exit()`が呼ばれる
+7. `manager.changeState()`（`StateManager.cpp`）で`StateA::exit()`が呼ばれる（今回は空のメソッド）
 
 8. `manager.changeState()`（`StateManager.cpp`）の`currentState`が新しい状態`StateB`に更新
 
-9. `manager.changeState()`（`StateManager.cpp`）で`StateB::enter()`が呼ばれる
+9. `manager.changeState()`（`StateManager.cpp`）で`StateB::enter()`が呼ばれる（今回は空のメソッド）
+
+10. `manager.changeState()`（`StateManager.cpp`）でprintln()が実行（シリアルモニタ用の出力）
 
 **更新タイミングのループが終了**
 
-10. `stateManager.update()` が呼ばれる
+11. `stateManager.update()` が呼ばれる
 
-11. `StateManager::update()`（`StateManager.cpp`）から現在の状態である `StateB::update()`（`StateA.cpp`）が呼ばれる
+12. `StateManager::update()`（`StateManager.cpp`）から現在の状態である `StateB::update()`（`StateA.cpp`）が呼ばれる
 
-12. 以下繰り返し(StateA -> StateB -> StateCの順番に遷移していく)
+13. 以下繰り返し(StateA -> StateB -> StateCの順番に遷移していく)
 
 
 **main.cpp**
