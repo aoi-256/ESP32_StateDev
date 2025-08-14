@@ -7,7 +7,8 @@ void StateC::update(StateManager& manager) {
 
     if(loopCounter > 1000){
         loopCounter = 0;
-        manager.changeState(std::unique_ptr<StateInterface>(new StateA()));
+        // 状態遷移時にunique_ptr<StateInterface>で安全に管理
+        manager.changeState(std::make_unique<StateA>());
     }
 }
 
