@@ -73,8 +73,7 @@ ESP32_StateDev/
 
 **更新タイミングのループ**
 
-6. 4の処理が1000回実行されると、`StateA::update()` から `manager.changeState()`（`StateManager.cpp`） が呼ばれる
-
+6. 5の処理が1000回実行されると、`StateA::update()` から `manager.changeState()`（`StateManager.cpp`） が呼ばれる (`StateA::update()`のコードによって条件の変更ができる）
 7. `manager.changeState()`（`StateManager.cpp`）で`StateA::exit()`が呼ばれる（今回は空のメソッド）
 
 8. `manager.changeState()`（`StateManager.cpp`）の`currentState`が新しい状態`StateB`に更新
